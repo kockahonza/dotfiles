@@ -3,6 +3,8 @@
 """"""""""""""""""""""""""""""
 call plug#begin()
 
+Plug 'l04m33/vlime', {'rtp': 'vim/'}
+
 Plug 'kien/rainbow_parentheses.vim'
 
 Plug 'lambdalisue/suda.vim'
@@ -163,8 +165,8 @@ map <leader>cd :cd %:p:h<cr>:pwd<cr>
 map <leader>s :vsplit<cr>
 
 try
-  set switchbuf=useopen,usetab,newtab
-  set stal=2
+    set switchbuf=useopen,usetab,newtab
+    set stal=2
 catch
 endtry
 
@@ -186,44 +188,45 @@ map <leader>pr :CocCommand python.execInTerminal<cr>
 " => Plugin configuration
 """""""""""""""""""""""""""""
 
- " Coc
- inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
- inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+" Coc
+inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
+inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 
- let g:coc_snippet_next = "<C-Right>"
- let g:coc_snippet_prev = "<C-Left>"
+let g:coc_snippet_next = "<C-Right>"
+let g:coc_snippet_prev = "<C-Left>"
 
- inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm() : 
-                                            \"\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm() : 
+            \"\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
 
- nmap <silent> gd <Plug>(coc-definition)
- nmap <silent> gy <Plug>(coc-type-definition)
- nmap <silent> gi <Plug>(coc-implementation)
- nmap <silent> gr <Plug>(coc-references)
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
 
- nnoremap <silent> K :call <SID>show_documentation()<CR>
+nnoremap <silent> K :call <SID>show_documentation()<CR>
 
- function! s:show_documentation()
-   if (index(['vim','help'], &filetype) >= 0)
-     execute 'h '.expand('<cword>')
-   else
-     call CocAction('doHover')
-   endif
- endfunction
+function! s:show_documentation()
+    if (index(['vim','help'], &filetype) >= 0)
+        execute 'h '.expand('<cword>')
+    else
+        call CocAction('doHover')
+    endif
+endfunction
 
- map <leader>cl :CocList<cr>
- map <leader>cc :CocCommand<cr>
+map <leader>cl :CocList<cr>
+map <leader>cc :CocCommand<cr>
 
- map <leader>d :CocList diagnostics<cr>
+map <leader>d :CocList diagnostics<cr>
 
- autocmd CursorHold * silent call CocActionAsync('highlight')
+autocmd CursorHold * silent call CocActionAsync('highlight')
 
- " Airline
- let g:airline_section_error = '%{airline#util#wrap(airline#extensions#coc#get_error(),0)}'
- let g:airline_section_warning = '%{airline#util#wrap(airline#extensions#coc#get_warning(),0)}'
- let g:airline_powerline_fonts = 1
+" Airline
+let g:airline_section_error = '%{airline#util#wrap(airline#extensions#coc#get_error(),0)}'
+let g:airline_section_warning = '%{airline#util#wrap(airline#extensions#coc#get_warning(),0)}'
+let g:airline_powerline_fonts = 1
 
- let g:airline#extensions#coc#enabled = 1
+let g:airline#extensions#coc#enabled = 1
+let g:airline#extensions#tagbar#enabled = 0
 
 " BufExplorer
 map <leader>o :ToggleBufExplorer<cr>
@@ -261,36 +264,36 @@ let g:table_mode_map_prefix = '<Leader>x'
 
 " Tagbar
 let g:tagbar_type_haskell = {
-    \ 'ctagsbin'  : 'hasktags',
-    \ 'ctagsargs' : '-x -c -o-',
-    \ 'kinds'     : [
-        \  'm:modules:0:1',
-        \  'd:data: 0:1',
-        \  'd_gadt: data gadt:0:1',
-        \  't:type names:0:1',
-        \  'nt:new types:0:1',
-        \  'c:classes:0:1',
-        \  'cons:constructors:1:1',
-        \  'c_gadt:constructor gadt:1:1',
-        \  'c_a:constructor accessors:1:1',
-        \  'ft:function types:1:1',
-        \  'fi:function implementations:0:1',
-        \  'o:others:0:1'
-    \ ],
-    \ 'sro'        : '.',
-    \ 'kind2scope' : {
-        \ 'm' : 'module',
-        \ 'c' : 'class',
-        \ 'd' : 'data',
-        \ 't' : 'type'
-    \ },
-    \ 'scope2kind' : {
-        \ 'module' : 'm',
-        \ 'class'  : 'c',
-        \ 'data'   : 'd',
-        \ 'type'   : 't'
-    \ }
-\ }
+            \ 'ctagsbin'  : 'hasktags',
+            \ 'ctagsargs' : '-x -c -o-',
+            \ 'kinds'     : [
+            \  'm:modules:0:1',
+            \  'd:data: 0:1',
+            \  'd_gadt: data gadt:0:1',
+            \  't:type names:0:1',
+            \  'nt:new types:0:1',
+            \  'c:classes:0:1',
+            \  'cons:constructors:1:1',
+            \  'c_gadt:constructor gadt:1:1',
+            \  'c_a:constructor accessors:1:1',
+            \  'ft:function types:1:1',
+            \  'fi:function implementations:0:1',
+            \  'o:others:0:1'
+            \ ],
+            \ 'sro'        : '.',
+            \ 'kind2scope' : {
+            \ 'm' : 'module',
+            \ 'c' : 'class',
+            \ 'd' : 'data',
+            \ 't' : 'type'
+            \ },
+            \ 'scope2kind' : {
+            \ 'module' : 'm',
+            \ 'class'  : 'c',
+            \ 'data'   : 'd',
+            \ 'type'   : 't'
+            \ }
+            \ }
 map <leader>m :TagbarToggle<cr>
 
 """"""""""""""""""""""""""""""
@@ -314,7 +317,7 @@ function ToggleHex()
         " set new options
         setlocal binary " make sure it overrides any textwidth, etc.
         silent :e " this will reload the file without trickeries 
-                            "(DOS line endings will be shown entirely )
+        "(DOS line endings will be shown entirely )
         let &ft="xxd"
         " set status
         let b:editHex=1
