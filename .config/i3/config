@@ -13,7 +13,7 @@ set $mod Mod4
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
-font pango:FantasqueSansMono Nerd Font 11
+font pango:FantasqueSansMono Nerd Font Mono 11
 
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
@@ -24,6 +24,7 @@ floating_modifier $mod
 
 # start a terminal
 bindsym $mod+Return exec kitty --single-instance
+bindsym $mod+u exec urxvt
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -165,8 +166,8 @@ mode "power_control" {
     bindsym p exec systemctl poweroff; mode "default"
     bindsym r exec systemctl reboot; mode "default"
     bindsym l exec i3-msg exit; mode "default"
-    bindsym s exec i3lock-fancy -p -t "Prove your quality captain" && systemctl suspend; mode "default"
-    bindsym h exec i3lock-fancy -p -t "Prove your quality captain" && systemctl hibernate; mode "default"
+    bindsym s exec i3lock-fancy -p -t "Aluminosilicates" && systemctl suspend; mode "default"
+    bindsym h exec i3lock-fancy -p -t "Aluminosilicates" && systemctl hibernate; mode "default"
     bindsym Escape mode "default"
 }
 
@@ -231,7 +232,8 @@ client.urgent           $red $red $white $red $red
 # }
 
 bar {
-    font pango:FantasqueSansMono Nerd Font 13
+    font pango:FantasqueSansMono Nerd Font Mono 13
+    # font pango:Victor Mono Medium:style=Medium Italic,Italic
     position top
     status_command python ~/.config/i3pystatus/mystatus.py
 }
@@ -249,11 +251,14 @@ bindsym XF86MonBrightnessDown exec light -U 10
 bindsym Print exec scrot
 
 bindsym $mod+y exec ~/.config/i3/change_layout.sh
-# bindsym $mod+x exec i3lock-fancy -p -t "Prove your quality captain"
-bindsym $mod+x exec --no-startup-id slock
+bindsym $mod+x exec i3lock-fancy -p -t "Aluminosilicates"
+# bindsym $mod+x exec --no-startup-id slock
 bindsym $mod+i exec i3-input
 bindsym $mod+p exec killall glava || glava --desktop
 bindsym $mod+k exec passmenu
+
+# bindsym $mod+j exec firefox-developer-edition
+bindsym $mod+j exec chromium
 
 exec --no-startup-id feh --bg-scale ~/.config/i3/wallpaper.jpg
 exec --no-startup-id xrdb ~/.Xresources/Xresources

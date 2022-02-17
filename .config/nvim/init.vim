@@ -40,13 +40,13 @@ Plug 'dhruvasagar/vim-table-mode'
 
 Plug 'unblevable/quick-scope'
 
-Plug 'neovimhaskell/haskell-vim'
+" Plug 'neovimhaskell/haskell-vim'
 
-Plug 'jacoborus/tender.vim'
+" Plug 'jacoborus/tender.vim'
 
 Plug 'simnalamburt/vim-mundo'
 
-Plug 'metakirby5/codi.vim'
+" Plug 'metakirby5/codi.vim'
 
 Plug 'tpope/vim-repeat'
 
@@ -59,6 +59,10 @@ Plug 'calviken/vim-gdscript3'
 Plug 'michaeljsmith/vim-indent-object'
 
 Plug 'wellle/targets.vim'
+
+" Plug 'edwinb/idris2-vim'
+
+Plug 'idris-hackers/idris-vim'
 
 " Plug 'sheerun/vim-polyglot'
 
@@ -130,12 +134,16 @@ autocmd VimEnter * AirlineTheme deus
 """"""""""""""""""""""""""""""
 map Y y$
 let mapleader = ','
+let maplocalleader = '<'
 map <silent> <leader><cr> :noh<cr>
 
 map <C-Down> <C-W>j
 map <C-Up> <C-W>k
 map <C-Left> <C-W>h
 map <C-Right> <C-W>l
+
+map <S-Down> 22j
+map <S-Up> 22k
 
 map <C-j> <C-W>j
 map <C-k> <C-W>k
@@ -169,20 +177,6 @@ try
     set stal=2
 catch
 endtry
-
-" Extra stuff for haskell
-map <leader>hl :!hlint %<CR>
-map <leader>hi :!hindent %<CR>
-map <leader>hg :!kitty --detach ghcid "--command=stack ghci %"<CR><CR>
-
-" Extra stuff for python
-map <leader>pr :CocCommand python.execInTerminal<cr>
-
-
-" Godotscript fancy stuff
-" autocmd BufNewFile,BufRead *.gd set ft=python
-" autocmd BufNewFile,BufRead *.gd set ft=python
-
 
 """""""""""""""""""""""""""""
 " => Plugin configuration
@@ -253,48 +247,74 @@ au Syntax * RainbowParenthesesLoadBraces
 " Vim-table-mode
 let g:table_mode_map_prefix = '<Leader>x'
 
-" Vim-haskell
-" let g:haskell_enable_quantification = 1   " to enable highlighting of `forall`
-" let g:haskell_enable_recursivedo = 1      " to enable highlighting of `mdo` and `rec`
-" let g:haskell_enable_arrowsyntax = 1      " to enable highlighting of `proc`
-" let g:haskell_enable_pattern_synonyms = 1 " to enable highlighting of `pattern`
-" let g:haskell_enable_typeroles = 1        " to enable highlighting of type roles
-" let g:haskell_enable_static_pointers = 1  " to enable highlighting of `static`
-" let g:haskell_backpack = 1                " to enable highlighting of backpack keywords
-
 " Tagbar
-let g:tagbar_type_haskell = {
-            \ 'ctagsbin'  : 'hasktags',
-            \ 'ctagsargs' : '-x -c -o-',
-            \ 'kinds'     : [
-            \  'm:modules:0:1',
-            \  'd:data: 0:1',
-            \  'd_gadt: data gadt:0:1',
-            \  't:type names:0:1',
-            \  'nt:new types:0:1',
-            \  'c:classes:0:1',
-            \  'cons:constructors:1:1',
-            \  'c_gadt:constructor gadt:1:1',
-            \  'c_a:constructor accessors:1:1',
-            \  'ft:function types:1:1',
-            \  'fi:function implementations:0:1',
-            \  'o:others:0:1'
-            \ ],
-            \ 'sro'        : '.',
-            \ 'kind2scope' : {
-            \ 'm' : 'module',
-            \ 'c' : 'class',
-            \ 'd' : 'data',
-            \ 't' : 'type'
-            \ },
-            \ 'scope2kind' : {
-            \ 'module' : 'm',
-            \ 'class'  : 'c',
-            \ 'data'   : 'd',
-            \ 'type'   : 't'
-            \ }
-            \ }
-map <leader>m :TagbarToggle<cr>
+" let g:tagbar_type_haskell = {
+"             \ 'ctagsbin'  : 'hasktags',
+"             \ 'ctagsargs' : '-x -c -o-',
+"             \ 'kinds'     : [
+"             \  'm:modules:0:1',
+"             \  'd:data: 0:1',
+"             \  'd_gadt: data gadt:0:1',
+"             \  't:type names:0:1',
+"             \  'nt:new types:0:1',
+"             \  'c:classes:0:1',
+"             \  'cons:constructors:1:1',
+"             \  'c_gadt:constructor gadt:1:1',
+"             \  'c_a:constructor accessors:1:1',
+"             \  'ft:function types:1:1',
+"             \  'fi:function implementations:0:1',
+"             \  'o:others:0:1'
+"             \ ],
+"             \ 'sro'        : '.',
+"             \ 'kind2scope' : {
+"             \ 'm' : 'module',
+"             \ 'c' : 'class',
+"             \ 'd' : 'data',
+"             \ 't' : 'type'
+"             \ },
+"             \ 'scope2kind' : {
+"             \ 'module' : 'm',
+"             \ 'class'  : 'c',
+"             \ 'data'   : 'd',
+"             \ 'type'   : 't'
+"             \ }
+"             \ }
+
+map <leader>b :TagbarToggle<cr>
+
+" COC-EXTENSIONS
+" coc-actions
+function! s:cocActionsOpenFromSelected(type) abort
+    execute 'CocCommand actions.open ' . a:type
+endfunction
+xmap <silent> <leader>a :<C-u>execute 'CocCommand actions.open ' . visualmode()<CR>
+nmap <silent> <leader>a :<C-u>set operatorfunc=<SID>cocActionsOpenFromSelected<CR>g@
+
+" coc-calc
+nmap <Leader>mc <Plug>(coc-calc-result-replace)
+
+
+""""""""""""""""""""""""""""""
+" => Specific language config
+""""""""""""""""""""""""""""""
+" Haskell
+" map <leader>hl :!hlint %<CR>
+" map <leader>hi :!hindent %<CR>
+" map <leader>hs :%!stylish-haskell<CR>
+" map <leader>hg :!kitty --detach ghcid "--command=stack ghci %"<CR><CR>
+
+" highlight hsStructure ctermfg=108 guifg=#8ec07c gui=italic
+
+" Python
+map <leader>pr :CocCommand python.execInTerminal<cr>
+
+" Godotscript
+" autocmd BufNewFile,BufRead *.gd set ft=python
+" autocmd BufNewFile,BufRead *.gd set ft=python
+
+" Latex
+map <localleader>c :w !texcount - -sub<cr>
+
 
 """"""""""""""""""""""""""""""
 " => Extras
@@ -343,3 +363,6 @@ function ToggleHex()
     let &readonly=l:oldreadonly
     let &modifiable=l:oldmodifiable
 endfunction
+map <F10> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<'
+            \ . synIDattr(synID(line("."),col("."),0),"name") . "> lo<"
+            \ . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<CR>
