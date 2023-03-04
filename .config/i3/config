@@ -151,6 +151,8 @@ assign [class="Slack"] $comsworkspace
 assign [class="discord"] $comsworkspace
 assign [class="Deluge"] $torrentworkspace
 assign [class="Thunderbird"] $comsworkspace
+assign [instance="mail.google.com"] $comsworkspace
+assign [instance="outlook.office365.com"] $comsworkspace
 
 # reload the configuration file
 # bindsym $mod+Shift+c reload
@@ -265,4 +267,5 @@ exec --no-startup-id xrdb ~/.Xresources/Xresources
 exec --no-startup-id lxpolkit
 exec --no-startup-id redshift
 exec --no-startup-id nm-applet
-exec megasync
+exec chromium --app=https://mail.google.com/mail/
+exec chromium --app=https://outlook.office365.com/owa/
