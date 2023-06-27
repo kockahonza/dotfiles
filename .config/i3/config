@@ -153,6 +153,7 @@ assign [class="Deluge"] $torrentworkspace
 assign [class="Thunderbird"] $comsworkspace
 assign [instance="mail.google.com"] $comsworkspace
 assign [instance="outlook.office365.com"] $comsworkspace
+assign [instance="mattermost.web.cern.ch"] $comsworkspace
 
 # reload the configuration file
 # bindsym $mod+Shift+c reload
@@ -262,6 +263,7 @@ bindsym $mod+k exec passmenu
 # bindsym $mod+j exec firefox-developer-edition
 bindsym $mod+j exec chromium
 
+exec --no-startup-id ssh-agent
 exec --no-startup-id feh --bg-scale ~/.config/i3/wallpaper.jpg
 exec --no-startup-id xrdb ~/.Xresources/Xresources
 exec --no-startup-id lxpolkit
@@ -269,3 +271,4 @@ exec --no-startup-id redshift
 exec --no-startup-id nm-applet
 exec chromium --app=https://mail.google.com/mail/
 exec chromium --app=https://outlook.office365.com/owa/
+exec chromium --app=https://mattermost.web.cern.ch/

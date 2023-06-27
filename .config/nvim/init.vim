@@ -3,46 +3,48 @@
 """"""""""""""""""""""""""""""
 call plug#begin()
 
-Plug 'l04m33/vlime', {'rtp': 'vim/'}
+" Colors/UI/looks
+Plug 'morhetz/gruvbox'
 
-Plug 'kien/rainbow_parentheses.vim'
-
-Plug 'lambdalisue/suda.vim'
+Plug 'vim-airline/vim-airline'
 
 Plug 'vim-airline/vim-airline-themes'
 
-Plug 'morhetz/gruvbox'
-
+" LSP style stuff
 " Plug 'neoclide/coc.nvim', {'tag': '*', 'do': './install.sh'}
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 Plug 'honza/vim-snippets'
 
-Plug 'vim-airline/vim-airline'
+
+" Extra features - mostly essential
+Plug 'scrooloose/nerdtree'
 
 Plug 'tpope/vim-surround'
 
-Plug 'tpope/vim-fugitive'
+Plug 'simnalamburt/vim-mundo'
 
 Plug 'jlanzarotta/bufexplorer'
 
-Plug 'mileszs/ack.vim'
-
-Plug 'scrooloose/nerdtree'
-
 Plug 'tpope/vim-commentary'
 
-Plug 'svermeulen/vim-subversive'
+Plug 'wellle/targets.vim'
 
-Plug 'sirtaj/vim-openscad'
+Plug 'lambdalisue/suda.vim'
+
+
+" Extra features - range from pretty good to idk if I ever use them
+Plug 'tpope/vim-fugitive'
+
+Plug 'mileszs/ack.vim'
+
+Plug 'svermeulen/vim-subversive'
 
 Plug 'dhruvasagar/vim-table-mode'
 
 Plug 'unblevable/quick-scope'
 
 " Plug 'jacoborus/tender.vim'
-
-Plug 'simnalamburt/vim-mundo'
 
 " Plug 'metakirby5/codi.vim'
 
@@ -52,11 +54,17 @@ Plug 'junegunn/goyo.vim'
 
 Plug 'majutsushi/tagbar'
 
-Plug 'calviken/vim-gdscript3'
-
 Plug 'michaeljsmith/vim-indent-object'
 
-Plug 'wellle/targets.vim'
+Plug 'kien/rainbow_parentheses.vim'
+
+
+" Specific language stuff
+Plug 'l04m33/vlime', {'rtp': 'vim/'}
+
+Plug 'sirtaj/vim-openscad'
+
+Plug 'calviken/vim-gdscript3'
 
 Plug 'edwinb/idris2-vim'
 
@@ -125,6 +133,7 @@ let g:gruvbox_improved_strings=0
 set background=dark
 
 autocmd VimEnter * AirlineTheme deus
+let g:python3_host_prog='/usr/bin/python'
 
 
 """"""""""""""""""""""""""""""
