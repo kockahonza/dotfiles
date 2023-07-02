@@ -1,0 +1,11 @@
+*
+!.gitignore
+!.config
+!.config/i3
+!.config/i3/**/*
+!.config/kitty
+!.config/kitty/**/*
+!.config/nvim
+!.config/nvim/**/*
+!.config/ranger
+!.config/ranger/**/*
