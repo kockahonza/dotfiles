@@ -267,7 +267,7 @@ exec --no-startup-id ssh-agent
 exec --no-startup-id feh --bg-scale ~/.config/i3/wallpaper.jpg
 exec --no-startup-id xrdb ~/.Xresources/Xresources
 exec --no-startup-id lxpolkit
-exec --no-startup-id redshift
+exec --no-startup-id redshift -l 46.2:6.14
 exec --no-startup-id nm-applet
 exec chromium --app=https://mail.google.com/mail/
 exec chromium --app=https://outlook.office365.com/owa/
