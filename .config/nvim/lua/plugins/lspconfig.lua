@@ -24,6 +24,17 @@ return {
             lspconfig.lua_ls.setup({})
             lspconfig.julials.setup({})
             lspconfig.lemminx.setup({})
+            lspconfig.jsonls.setup({})
+            lspconfig.ltex.setup({})
+            lspconfig.texlab.setup({
+                settings = {
+                    texlab = {
+                        build = { onSave = true }
+                    }
+                }
+            })
+            lspconfig.marksman.setup({})
+            lspconfig.hls.setup({})
 
             vim.api.nvim_create_autocmd('LspAttach', {
                 group = vim.api.nvim_create_augroup('UserLspConfig', {}),
