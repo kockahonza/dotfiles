@@ -25,6 +25,8 @@ vim.opt.shiftwidth = 4
 vim.opt.autoindent = true
 vim.opt.smartindent = true
 
+vim.opt.formatexpr = ""
+
 vim.opt.textwidth = 0
 vim.opt.wrap = true
 vim.opt.linebreak = true
@@ -39,6 +41,7 @@ vim.opt.showmatch = true
 vim.opt.wildmenu = true
 vim.opt.wildignore = { "*.o", "*~", "*.pyc", "*/.git/*", "*/.hg/*", "*/.svn/*", "*/.DS_Store" }
 
+-- Mostly syntax off as treesitter is used - though may be turned on in treesitter config
 vim.cmd.syntax("off")
 vim.opt.relativenumber = true
 vim.opt.number = true
@@ -90,12 +93,14 @@ vim.keymap.set("n", "<leader>t-", ":tabmove -1<cr>")
 -- Opens a new tab with the current buffer"s path
 vim.keymap.set("n", "<leader>te", ':tabedit <c-r>=expand("%:p:h")<cr>/')
 
+-- Toggle textwidth for automatic insert mode wrapping and wrapping using gq (this is why formatexpr is reset)
 vim.keymap.set("n", "<leader>w", function()
     if vim.opt.textwidth:get() == 0 then
         vim.opt.textwidth = 120
     else
         vim.opt.textwidth = 0
     end
+    print("textwidth set to", vim.opt.textwidth:get())
 end)
 
 ------------------------------------------
