@@ -259,6 +259,7 @@ bindsym $mod+x exec i3lock-fancy -p -t "Aluminosilicates"
 bindsym $mod+i exec i3-input
 bindsym $mod+p exec killall glava || glava --desktop
 bindsym $mod+k exec passmenu
+bindsym $mod+. exec dunstctl context
 
 # bindsym $mod+j exec firefox-developer-edition
 bindsym $mod+j exec chromium
@@ -271,4 +272,5 @@ exec --no-startup-id redshift -l 46.2:6.14
 exec --no-startup-id nm-applet
 exec chromium --app=https://mail.google.com/mail/
 exec chromium --app=https://outlook.office365.com/owa/
-exec chromium --app=https://mattermost.web.cern.ch/
+exec slack
+exec megasync
