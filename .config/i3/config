@@ -264,7 +264,7 @@ bindsym $mod+. exec dunstctl context
 # bindsym $mod+j exec firefox-developer-edition
 bindsym $mod+j exec chromium
 
-exec --no-startup-id ssh-agent
+exec --no-startup-id ~/.config/i3/setup_ssh_agent
 exec --no-startup-id feh --bg-scale ~/.config/i3/wallpaper.jpg
 exec --no-startup-id xrdb ~/.Xresources/Xresources
 exec --no-startup-id lxpolkit

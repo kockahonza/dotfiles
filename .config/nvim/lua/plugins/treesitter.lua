@@ -4,7 +4,7 @@ return {
     event = {
         "FileType",
     },
-    dependencies = { "HiPhish/nvim-ts-rainbow2" },
+    dependencies = { },
     config = function()
         if (vim.bo.filetype ~= "tex") then
             require("nvim-treesitter.configs").setup({
@@ -46,13 +46,6 @@ return {
                         scope_incremental = false,
                         node_decremental = "<bs>"
                     }
-                },
-                rainbow = {
-                    enable = true,
-                    -- Which query to use for finding delimiters
-                    query = 'rainbow-parens',
-                    -- Highlight the entire buffer all at once
-                    strategy = require('ts-rainbow').strategy.global,
                 }
             })
         else
