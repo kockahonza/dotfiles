@@ -6,6 +6,7 @@ return {
     },
     dependencies = { },
     config = function()
+        -- Manually disable for tex as it sucks for some reason
         if (vim.bo.filetype ~= "tex") then
             require("nvim-treesitter.configs").setup({
                 auto_install = true,

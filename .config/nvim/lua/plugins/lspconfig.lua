@@ -25,7 +25,13 @@ return {
             lspconfig.julials.setup({})
             lspconfig.lemminx.setup({})
             lspconfig.jsonls.setup({})
-            lspconfig.ltex.setup({})
+            lspconfig.ltex.setup({
+                settings = {
+                    ltex = {
+                        language = "en-GB",
+                    }
+                }
+            })
             lspconfig.texlab.setup({
                 settings = {
                     texlab = {
